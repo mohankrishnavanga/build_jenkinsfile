@@ -4,6 +4,10 @@ pipeline {
          TEST_ENV = 'jenkins_test'
          TEST_SCRIPT = 'linux'
     }
+    parameters {
+      string(defaultValue: 'https://172.19.34.165:9200', description: '', name: 'elasticClusterIP')
+      string(defaultValue: 'admin', description: 'Elasticsearch User', name:'elasticUser')
+    }
     stages {
         stage('build') {
             steps {
@@ -12,6 +16,9 @@ pipeline {
                 echo $TEST_ENV
                 echo $TEST_SCRIPT
                 '''
+            withCredentials([usernamePassword(credentialsId: 'elastic-cluster', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+              sh "curl -u ${USER}:${PASS} ${params.elasticClusterIP} --insecure"
+              }
             }
         }
         stage('Test') {
