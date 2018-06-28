@@ -30,7 +30,7 @@ pipeline {
               script {
                 sh 'ls -ltr'
                 def getChannels = new JsonSlurper().parseText(new File("$workspace/testchannels.json").text)
-                echo getChannels
+                print getChannels
             }
         }
       }
