@@ -13,6 +13,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
+              script {
                 sh '''
                 python --version
                 echo $TEST_ENV
@@ -22,14 +23,18 @@ pipeline {
                   sh "curl -u ${USER}:${PASS} ${params.elasticClusterIP} --insecure"
               }
             }
+          }
         }
         stage('Testing Json Variable') {
             steps {
+              script {
+                sh ' echo "hello world"'
                 def getChannels = new File("testchannels.json")
                 getChannels = new JsonSlurper().parseText(getChannels.text)
                 echo getChannels
             }
         }
+      }
         stage('Deploy') {
             steps {
                 echo 'Deploying'
