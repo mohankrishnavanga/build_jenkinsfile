@@ -29,7 +29,7 @@ pipeline {
             steps {
               script {
                 sh ' echo "hello world"'
-                def getChannels = new File("testchannels.json")
+                def getChannels = new File(".\\testchannels.json")
                 getChannels = new JsonSlurper().parseText(getChannels.text)
                 echo getChannels
             }
