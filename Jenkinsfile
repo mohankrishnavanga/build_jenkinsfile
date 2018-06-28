@@ -18,14 +18,14 @@ pipeline {
                 echo $TEST_ENV
                 echo $TEST_SCRIPT
                 '''
-            withCredentials([usernamePassword(credentialsId: 'elastic-cluster', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-              sh "curl -u ${USER}:${PASS} ${params.elasticClusterIP} --insecure"
+                withCredentials([usernamePassword(credentialsId: 'elastic-cluster', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+                  sh "curl -u ${USER}:${PASS} ${params.elasticClusterIP} --insecure"
               }
             }
         }
         stage('Testing Json Variable') {
             steps {
-                def getChannels = new File("D:\\Mohan\\workspace\\git\\build_jenkinsfile\\testchannels.json")
+                def getChannels = new File("testchannels.json")
                 getChannels = new JsonSlurper().parseText(getChannels.text)
                 echo getChannels
             }
