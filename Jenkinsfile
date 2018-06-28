@@ -29,7 +29,7 @@ pipeline {
             steps {
               script {
                 sh 'ls -ltr'
-                def getChannels = new File("$workspace\\testchannels.json")
+                def getChannels = new File("$workspace/testchannels.json")
                 getChannels = new JsonSlurper().parseText(getChannels.text)
                 echo getChannels
             }
