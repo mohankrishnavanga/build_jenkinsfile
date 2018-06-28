@@ -2,4 +2,6 @@ import sys
 
 jsonVar = sys.argv[1]
 
-print jsonVar
+echo $jsonVar
+echo $jsonVar['parentname']
+echo $jsonVar['childchannels']['childchannel1']

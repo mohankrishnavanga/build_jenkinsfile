@@ -30,9 +30,10 @@ pipeline {
               script {
                 sh 'ls -ltr'
                 def getChannels = new JsonSlurper().parseText(new File("$workspace/testchannels.json").text)
-                print getChannels
+                sh 'python scripts/getJson.py getChannels'
+                /*print getChannels
                 print getChannels['parentname']
-                print getChannels['childchannels']['childchannel1']
+                print getChannels['childchannels']['childchannel1'] */
             }
         }
       }
