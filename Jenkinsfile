@@ -29,12 +29,12 @@ pipeline {
             steps {
               script {
                 sh 'ls -ltr'
-                def slurpJSON() {
+                sh 'python scripts/getJson.py'
+                /*def slurpJSON() {
                         return new groovy.json.JsonSlurper().parseText(new File("$workspace/testchannels.json").text);
                 }
                 def getChannels = new slurpJSON()
-                sh 'python scripts/getJson.py $getChannels'
-                /*print getChannels
+                print getChannels
                 print getChannels['parentname']
                 print getChannels['childchannels']['childchannel1'] */
             }
