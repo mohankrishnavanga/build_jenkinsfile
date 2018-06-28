@@ -1,3 +1,5 @@
+import groovy.json.JsonSlurper
+
 pipeline {
     agent any
     environment {
@@ -21,9 +23,11 @@ pipeline {
               }
             }
         }
-        stage('Test') {
+        stage('Testing Json Variable') {
             steps {
-                echo 'Testing'
+                def getChannels = new File("D:\\Mohan\\workspace\\git\\build_jenkinsfile\\testchannels.json")
+                getChannels = new JsonSlurper().parseText(getChannels.text)
+                echo getChannels
             }
         }
         stage('Deploy') {

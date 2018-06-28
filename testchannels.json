@@ -1,0 +1,17 @@
+{
+  "parentname":"parent1",
+  "parentid":"1",
+  "parentlabel":"parentlabel1",
+  "childchannels":{
+    "childchannel1":{
+      "childname":"child1",
+      "childid":"1",
+      "childlabel":"childlabel1"
+    },
+    "childchannel2":{
+      "childname":"child2",
+      "childid":"2",
+      "childlabel":"childlabel2"
+    }
+  }
+}
