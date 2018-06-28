@@ -28,7 +28,7 @@ pipeline {
         stage('Testing Json Variable') {
             steps {
               script {
-                sh ' echo "hello world"'
+                sh 'ls -ltr'
                 def getChannels = new File("$workspace\\testchannels.json")
                 getChannels = new JsonSlurper().parseText(getChannels.text)
                 echo getChannels
